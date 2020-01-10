@@ -20,6 +20,7 @@ class Pokemon:
         self.number = number
         self.generation = self.get_generation(number)
         self.image_path = self.get_image_path(number)
+        self.name = self.get_name(number)
 
     @classmethod
     def do_we_gotta_catch_em_all(cls) -> bool:
@@ -39,3 +40,9 @@ class Pokemon:
         pokedex = read_csv("data/pokemon.csv")
         generation = pokedex[pokedex["pokedex_number"] == number].iloc[0]["generation"]
         return Gen(generation)
+
+    @classmethod
+    def get_name(cls, number: int) -> str:
+        pokedex = read_csv("data/pokemon.csv")
+        name = pokedex[pokedex["pokedex_number"] == number].iloc[0]["japanese_name"]
+        return name
