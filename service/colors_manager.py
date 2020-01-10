@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.spatial.distance import cdist
 
 from sklearn.cluster import KMeans
 
@@ -12,6 +13,9 @@ class ColorsManager:
         k_means_model.fit(pixels)
         float_colors_array = k_means_model.cluster_centers_
         return self._cast_colors_to_int(float_colors_array)
+
+    def calculate_colors_complexity(self, colors: np.ndarray) -> float:
+        return float(np.sum(cdist(colors, colors)))
 
     def _cast_colors_to_int(self, colors_array: np.ndarray) -> np.ndarray:
         return np.rint(colors_array)
