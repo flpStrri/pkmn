@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.cluster import KMeans
 
 
-class MainColorsCalculator:
+class ColorsManager:
     def calculate_main_colors(self, pixels: np.ndarray, n_colors: int = 10) -> np.ndarray:
         _, pixel_dimension = pixels.shape
         if pixel_dimension != 3:
