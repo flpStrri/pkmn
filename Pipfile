@@ -10,7 +10,8 @@ black = "==19.3b0"
 mypy = "==0.740"
 
 [packages]
-
+numpy = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
