@@ -1,6 +1,6 @@
 import numpy as np
 
-from services import PkmnImageManager
+from services.pkmn_image_manager import PkmnImageManager
 
 
 def test_image_to_pixels():
