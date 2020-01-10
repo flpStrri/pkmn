@@ -1,10 +1,13 @@
 import numpy as np
 
-from services.pkmn_image_manager import PkmnImageManager
+from service.pkmn_image_manager import PkmnImageManager
 
 
 def test_image_to_pixels():
     pkmn_image_manager = PkmnImageManager()
-    pixel_array = pkmn_image_manager.get_pkmn_image_pixel_array(pkmn_nb=16)
-    assert isinstance(pixel_array, np.array)
-    assert isinstance(pixel_array.shape[1], 3)
+    pixel_array = pkmn_image_manager.get_image_pixel_array(image_path="data/images/1.png")
+    assert isinstance(pixel_array, np.ndarray)
+    assert pixel_array.shape[1] == 4
+
+    other_pixel_array = pkmn_image_manager.get_image_pixel_array(image_path="data/images/2.png")
+    assert not np.array_equal(pixel_array, other_pixel_array)
