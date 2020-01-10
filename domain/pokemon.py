@@ -1,5 +1,6 @@
 from enum import Enum
 from os.path import abspath
+from pandas import read_csv
 
 
 class Gen(Enum):
@@ -27,3 +28,9 @@ class Pokemon:
         path = path + "/female" if female else path
         path = path + "/" + str(number) + ".png"
         return abspath(path)
+
+    @staticmethod
+    def get_generation(number: int) -> Gen:
+        pokedex = read_csv("data/pokemon.csv")
+        generation = pokedex[pokedex["pokedex_number"] == number].iloc[0]["generation"]
+        return Gen(generation)
