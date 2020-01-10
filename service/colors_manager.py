@@ -15,7 +15,7 @@ class ColorsManager:
         return self._cast_colors_to_int(float_colors_array)
 
     def calculate_colors_complexity(self, colors: np.ndarray) -> float:
-        return float(np.sum(cdist(colors, colors)))
+        return float(np.sum(cdist(colors, colors))) / 2
 
     def _cast_colors_to_int(self, colors_array: np.ndarray) -> np.ndarray:
         return np.rint(colors_array)
