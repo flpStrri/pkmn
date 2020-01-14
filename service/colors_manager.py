@@ -6,7 +6,7 @@ from sklearn.cluster import KMeans
 
 class ColorsManager:
     @classmethod
-    def calculate_main_colors(cls, pixels: np.ndarray, n_colors: int = 10) -> np.ndarray:
+    def calculate_main_colors(cls, pixels: np.ndarray, n_colors: int = 7) -> np.ndarray:
         _, pixel_dimension = pixels.shape
         if pixel_dimension != 3:
             raise cls.WrongFormat("")
