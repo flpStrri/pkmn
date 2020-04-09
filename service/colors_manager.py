@@ -6,11 +6,11 @@ from sklearn.cluster import KMeans
 
 class ColorsManager:
     @classmethod
-    def calculate_main_colors(cls, pixels: np.ndarray, n_colors: int = 10) -> np.ndarray:
+    def calculate_main_colors(cls, pixels: np.ndarray, n_colors: int = 40) -> np.ndarray:
         _, pixel_dimension = pixels.shape
         if pixel_dimension != 3:
             raise cls.WrongFormat("")
-        k_means_model = KMeans(n_colors)
+        k_means_model = KMeans(n_colors, n_init=200)
         k_means_model.fit(pixels)
         float_colors_array = k_means_model.cluster_centers_
         return cls._cast_colors_to_int(float_colors_array)
