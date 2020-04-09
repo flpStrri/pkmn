@@ -12,6 +12,8 @@ mypy = "==0.740"
 [packages]
 numpy = "*"
 pillow = "*"
+pandas = "*"
+colr = "*"
 
 [requires]
 python_version = "3.7"
