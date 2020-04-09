@@ -1,5 +1,6 @@
 import numpy as np
 from PIL import Image
+from colr import color as print_color
 
 from domain.image_representation import ImageRepresentation
 from service.colors_manager import ColorsManager
@@ -7,10 +8,13 @@ from service.colors_manager import ColorsManager
 
 class PkmnImageManager:
     @classmethod
-    def get_complexity_from_path(cls, path: str) -> float:
+    def get_complexity_from_path(cls, path: str, n_colors: int) -> float:
         pixel_array = cls._get_image_pixel_array(path)
         representation = ImageRepresentation(path, pixel_array)
-        colors = ColorsManager.calculate_main_colors(representation.non_empty_pixels)
+        colors = ColorsManager.calculate_main_colors(representation.non_empty_pixels, n_colors=n_colors)
+        for color in colors:
+            color_tuple = tuple(color)
+            print(print_color('chosen color', fore=color_tuple, back=color_tuple))
         complexity = ColorsManager.calculate_colors_complexity(colors)
         return complexity
 
